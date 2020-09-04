@@ -73,7 +73,7 @@ bindsym $mod+e split toggle
 bindsym $mod+f fullscreen toggle
 
 # change container layout (stacked, tabbed, toggle split)
-bindsym $mod+z layout stacking
+#bindsym $mod+z layout stacking
 bindsym $mod+x layout tabbed
 bindsym $mod+c layout default
 
@@ -89,11 +89,11 @@ set $ws1 "1"
 set $ws2 "2"
 set $ws3 "3"
 set $ws4 "4"
-set $ws5 "draw"
+set $ws5 "5"
 set $ws6 "6"
 set $ws7 "7"
 set $ws8 "8"
-set $ws9 "9"
+set $ws9 "lecture"
 set $ws10 "social"
 
 # switch to workspace
@@ -105,7 +105,7 @@ bindsym $mod+5 workspace $ws5
 bindsym $mod+6 workspace $ws6
 bindsym $mod+7 workspace $ws7
 bindsym $mod+8 workspace $ws8
-bindsym $mod+9 workspace $ws9
+bindsym $mod+z workspace lecture
 bindsym $mod+s workspace social
 bindsym $mod+- workspace prev
 bindsym $mod+= workspace next
@@ -120,7 +120,7 @@ bindsym $mod+Mod1+5 move container to workspace $ws5
 bindsym $mod+Mod1+6 move container to workspace $ws6
 bindsym $mod+Mod1+7 move container to workspace $ws7
 bindsym $mod+Mod1+8 move container to workspace $ws8
-bindsym $mod+Mod1+9 move container to workspace $ws9
+bindsym $mod+Mod1+z move container to workspace lecture
 bindsym $mod+Mod1+s move container to workspace social
 
 # reload the configuration file
@@ -145,6 +145,7 @@ bindsym $mod+Shift+e exec i3-msg exit
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)
 bar {
+	#status_command /home/olof/.config/i3/next_launch
         status_command i3status
 	font pango:DejaVu Sans Mon 10
 	colors {
@@ -162,7 +163,7 @@ bar {
 
 #programs on startup
 exec --no-startup-id setxkbmap eu
-exec --no-startup-id mate-power-manager
+exec --no-startup-id xfce4-power-manager
 exec --no-startup-id volumeicon
 exec --no-startup-id setxkbmap -option caps:super
 exec --no-startup-id xcape -e Super_L=Escape
@@ -170,6 +171,7 @@ exec --no-startup-id nitrogen --restore &
 exec --no-startup-id picom
 exec --no-startup-id dunst
 exec --no-startup-id kdeconnect-indicator
+exec --no-startup-id xbindkeys
 
 #my shortcuts
 bindsym $mod+F10 exec dmenumount
@@ -182,8 +184,6 @@ for_window [title="pulsemixer"] floating enable
 bindsym $mod+Mod1+p exec $traterm sudo powertop
 for_window [title="PowerTOP"] floating enable
 bindsym $mod+a exec dolphin
-for_window [title="Dolphin"] floating enable
-bindsym $mod+v exec nvim-qt
 
 for_window [title="New Vegas"] floating disable
 
@@ -198,12 +198,7 @@ client.urgent           #2F343A #900000 #FFFFFF #900000   #900000
 client.placeholder      #000000 #0C0C0C #FFFFFF #000000   #0C0C0C
 client.background       #FFFFFF
 
-#social workspace (4)
+#social workspace
 assign [title="Discord"] social
 assign [title="Chat"] social
 assign [title="Friends"] social
-
-#draw workspace
-assign [title="Krita"] draw
-assign [title="Gimp"] draw
-
