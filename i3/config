@@ -184,6 +184,8 @@ for_window [title="pulsemixer"] floating enable
 bindsym $mod+Mod1+p exec $traterm sudo powertop
 for_window [title="PowerTOP"] floating enable
 bindsym $mod+a exec dolphin
+bindsym Print exec  maim -s | xclip -selection clipboard -t image/png
+
 
 for_window [title="New Vegas"] floating disable
 
